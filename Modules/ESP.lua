@@ -22,17 +22,17 @@ local mathceil = math.ceil
 local esp = {
     players = {},
     objects = {},
-    enabled = true,
+    enabled = false,
     teamcheck = false,
     fontsize = 13,
     font = 2,
     settings = {
-        name = {enabled = true, outline = true, color = Color3fromRGB(255, 255, 255)},
-        box = {enabled = true, outline = true, color = Color3fromRGB(255, 255, 255)},
-        healthbar = {enabled = true, outline = true},
-        healthtext = {enabled = true, outline = true, color = Color3fromRGB(255, 255, 255)},
-        distance = {enabled = true, outline = true, color = Color3fromRGB(255, 255, 255)},
-        viewangle = {enabled = true, color = Color3fromRGB(255, 255, 255)},
+        name = {enabled = false, outline = false, displaynames = false, color = Color3fromRGB(255, 255, 255)},
+        box = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
+        healthbar = {enabled = false, outline = false},
+        healthtext = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
+        distance = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
+        viewangle = {enabled = false, color = Color3fromRGB(255, 255, 255)},
     }
 }
 
