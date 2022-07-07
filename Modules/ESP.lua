@@ -97,7 +97,7 @@ local mainLoop = rs.RenderStepped:Connect(function()
                     v.name.Font = esp.font
                     v.name.Size = esp.fontsize
 
-                    if esp.settings.names.displaynames then
+                    if esp.settings.name.displaynames then
                         v.name.Text = i.DisplayName
                     else
                         v.name.Text = i.Name
