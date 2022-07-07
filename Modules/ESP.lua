@@ -92,11 +92,16 @@ local mainLoop = rs.RenderStepped:Connect(function()
                 if esp.settings.name.enabled then
                     v.name.Position = Vector2new(BoxSize.X / 2 + BoxPos.X, BoxPos.Y - 16)
                     v.name.Outline = esp.settings.name.outline
-                    v.name.Text = tostring(i)
                     v.name.Color = esp.settings.name.color
 
                     v.name.Font = esp.font
                     v.name.Size = esp.fontsize
+
+                    if esp.settings.names.displaynames then
+                        v.name.Text = i.DisplayName
+                    else
+                        v.name.Text = i.Name
+                    end
 
                     v.name.Visible = true
                 else
