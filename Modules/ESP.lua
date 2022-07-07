@@ -29,7 +29,7 @@ local esp = {
     settings = {
         name = {enabled = false, outline = false, displaynames = false, color = Color3fromRGB(255, 255, 255)},
         box = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
-        healthbar = {enabled = false, outline = false},
+        healthbar = {enabled = true, outline = false},
         healthtext = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
         distance = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
         viewangle = {enabled = false, color = Color3fromRGB(255, 255, 255)},
