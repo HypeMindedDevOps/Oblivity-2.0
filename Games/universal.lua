@@ -106,8 +106,6 @@ end})
 
 LightSection = VisualsColumn1:AddSection("Lighting")
 
-LightSection:AddLabel("Hi")
-
 LightSection:AddToggle({text = "Custom Ambient", flag = "Light_AmbientToggle", state = false, callback = function(bool)
     if bool == true then
         lighting.Ambient = library.flags["Light_AmbientColor"]
@@ -124,11 +122,15 @@ LightSection:AddToggle({text = "Global Shadows", flag = "Light_Shadows", state =
     lighting.GlobalShadows = bool
 end})
 
-if game.Workspace.Terrain:FindFirstChild("Clouds") then
-    LightSection:AddToggle({text = "Clouds", flag = "Light_Shadows", state = true, callback = function(bool)
+if ws.Terrain:FindFirstChild("Clouds") then
+    LightSection:AddToggle({text = "Clouds", flag = "Light_Clouds", state = true, callback = function(bool)
         ws.Terrain.Clouds.Enabled = bool
     end})
 end
+
+LightSection:AddToggle({text = "Grass", flag = "Light_Grass", state = true, callback = function(bool)
+    sethiddenproperty(ws.Terrain, "Decoration", bool)
+end})
 
 local VisualsColumn2 = VisualsTab:AddColumn()
 local SnaplineSection = VisualsColumn2:AddSection("Snapline")
@@ -343,7 +345,7 @@ function closestToMouse()
     return target
 end
 
-local mainLoop = game:GetService("RunService").RenderStepped:Connect(function()
+local mainLoop = rs.RenderStepped:Connect(function()
     if library.flags["Aim_BotToggle"] and not library.flags["Aim_SilentToggle"] then 
         if library.flags["Aim_KeyDown"] then
             local targetPlr = closestToMouse()
