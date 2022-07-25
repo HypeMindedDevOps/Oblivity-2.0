@@ -123,12 +123,12 @@ LightSection:AddToggle({text = "Global Shadows", flag = "Light_Shadows", state =
 end})
 
 if ws.Terrain:FindFirstChild("Clouds") then
-    LightSection:AddToggle({text = "Clouds", flag = "Light_Clouds", state = true, callback = function(bool)
+    LightSection:AddToggle({text = "Clouds", flag = "Light_Clouds", state = ws.Terrain:FindFirstChild("Clouds").Enabled, callback = function(bool)
         ws.Terrain.Clouds.Enabled = bool
     end})
 end
 
-LightSection:AddToggle({text = "Grass", flag = "Light_Grass", state = true, callback = function(bool)
+LightSection:AddToggle({text = "Grass", flag = "Light_Grass", state = gethiddenproperty(ws.Terrain, "Decoration"), callback = function(bool)
     sethiddenproperty(ws.Terrain, "Decoration", bool)
 end})
 
