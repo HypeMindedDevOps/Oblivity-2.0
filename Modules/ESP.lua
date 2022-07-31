@@ -90,10 +90,10 @@ end
 
 esp.TeamCheck = function(v)
     if plr.TeamColor == v.TeamColor then
-        return true
+        return false
     end
 
-    return false
+    return true
 end
 
 esp.NewPlayer = function(v)
