@@ -290,4 +290,3 @@ local mainLoop = rs.RenderStepped:Connect(function()
 end)
 
 getgenv().esp = esp
-getgenv().self_cham = self_cham
