@@ -117,7 +117,7 @@ for _,v in ipairs(plrs:GetPlayers()) do
     end
 end
 
-plrs.PlayerAdded:Connect(function(v)
+plrs.ChildAdded:Connect(function(v)
     esp.NewPlayer(v)
 end)
 
@@ -290,7 +290,6 @@ local mainLoop = rs.RenderStepped:Connect(function()
             v.healthText.Visible = false
             v.distance.Visible = false
             v.viewAngle.Visible = false
-            v.cham.Enabled = false
         end
     end
 end)
