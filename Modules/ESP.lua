@@ -22,28 +22,27 @@ local mathceil = math.ceil
 local esp = {
     players = {},
     objects = {},
-    chams = {}, 
-    enabled = false,
+    enabled = true,
     teamcheck = false,
     fontsize = 13,
     font = 2,
     settings = {
-        name = {enabled = false, outline = false, displaynames = false, color = Color3fromRGB(255, 255, 255)},
-        box = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
-        healthbar = {enabled = false, size = 1, outline = false},
-        healthtext = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
-        distance = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
-        viewangle = {enabled = false, color = Color3fromRGB(255, 255, 255)},
+        name = {enabled = true, outline = true, displaynames = true, color = Color3fromRGB(255, 255, 255)},
+        box = {enabled = true, outline = true, color = Color3fromRGB(255, 255, 255)},
+        healthbar = {enabled = true, size = 3, outline = true},
+        healthtext = {enabled = true, outline = true, color = Color3fromRGB(255, 255, 255)},
+        distance = {enabled = true, outline = true, color = Color3fromRGB(255, 255, 255)},
+        viewangle = {enabled = true, color = Color3fromRGB(255, 255, 255)},
     },
     settings_chams = {
-        enabled = false,
+        enabled = true,
         teamcheck = false,
-        outline = false,
+        outline = true,
         fill_color = Color3fromRGB(255, 255, 255),
         outline_color = Color3fromRGB(0, 0, 0), 
-        fill_transparency = 0.8,
+        fill_transparency = 0.3,
         outline_transparency = 0,
-        autocolor = false,
+        autocolor = true,
         settings_autocolor = {
             visible = Color3fromRGB(0, 255, 0),
             invisible = Color3fromRGB(255, 0, 0),
@@ -293,5 +292,23 @@ local mainLoop = rs.RenderStepped:Connect(function()
         end
     end
 end)
+
+esp.Unload = function()
+    mainLoop:Disconnect()
+    mainLoop = nil
+
+    for i,v in pairs(esp.players) do
+        for i2, v2 in pairs(v) do
+            if v2 == "cham" then
+                v2:Destroy()
+            else
+                v2:Remove()
+            end
+        end
+    end
+
+    table.clear(esp)
+    esp = nil
+end
 
 getgenv().esp = esp
