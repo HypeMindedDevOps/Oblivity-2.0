@@ -41,7 +41,7 @@ local library = {
 	tabSize = 0,
 	theme = {},
 	foldername = "oblivity/universal",
-	fileext = ".sex"
+	fileext = ".lua"
 }
 
 getgenv().library = library
