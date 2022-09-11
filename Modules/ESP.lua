@@ -22,17 +22,17 @@ local mathceil = math.ceil
 local esp = {
     players = {},
     objects = {},
-    enabled = false,
+    enabled = true,
     teamcheck = false,
     fontsize = 13,
     font = 2,
     settings = {
-        name = {enabled = false, outline = false, displaynames = false, color = Color3fromRGB(255, 255, 255)},
-        box = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
-        healthbar = {enabled = false, size = 3, outline = false},
-        healthtext = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
-        distance = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
-        viewangle = {enabled = false, color = Color3fromRGB(255, 255, 255)},
+        name = {enabled = true, outline = true, displaynames = false, color = Color3fromRGB(255, 255, 255)},
+        box = {enabled = true, outline = true, color = Color3fromRGB(255, 255, 255)},
+        healthbar = {enabled = true, size = 3, outline = true},
+        healthtext = {enabled = true, outline = true, color = Color3fromRGB(255, 255, 255)},
+        distance = {enabled = true, outline = true, color = Color3fromRGB(255, 255, 255)},
+        viewangle = {enabled = true, color = Color3fromRGB(255, 255, 255)},
     },
     settings_chams = {
         enabled = false,
@@ -111,7 +111,7 @@ esp.NewPlayer = function(v)
 end
 
 for _,v in ipairs(plrs:GetPlayers()) do
-    if v ~= plr then
+    if true then
         esp.NewPlayer(v)
     end
 end
@@ -133,7 +133,7 @@ end)
 
 local mainLoop = rs.RenderStepped:Connect(function()
     for i,v in pairs(esp.players) do
-        if i ~= plr and i.Character and i.Character:FindFirstChild("Humanoid") and i.Character:FindFirstChild("HumanoidRootPart") and i.Character:FindFirstChild("Head") and i.Character:FindFirstChild("Humanoid").Health <= 0 then
+        if i.Character and i.Character:FindFirstChild("Humanoid") and i.Character:FindFirstChild("HumanoidRootPart") and i.Character:FindFirstChild("Head") and i.Character:FindFirstChild("Humanoid").Health > 0 then
             local hum = i.Character.Humanoid
             local hrp = i.Character.HumanoidRootPart
             local head = i.Character.Head
