@@ -73,7 +73,7 @@ end
 
 esp.WallCheck = function(v)
     local ray = Ray.new(camera.CFrame.p, (v.Position - camera.CFrame.p).Unit * 300)
-    local part, position = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, {plr.Character}, false, true)
+    local part, position = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, {plr.Character, v.Parent}, false, true)
     if part then
         local hum = part.Parent:FindFirstChildOfClass("Humanoid")
         if not hum then
@@ -133,7 +133,7 @@ end)
 
 local mainLoop = rs.RenderStepped:Connect(function()
     for i,v in pairs(esp.players) do
-        if i ~= plr and i.Character and i.Character:FindFirstChild("Humanoid") and i.Character:FindFirstChild("HumanoidRootPart") and i.Character:FindFirstChild("Head") then
+        if i ~= plr and i.Character and i.Character:FindFirstChild("Humanoid") and i.Character:FindFirstChild("HumanoidRootPart") and i.Character:FindFirstChild("Head") and i.Character:FindFirstChild("Humanoid").Health <= 0 then
             local hum = i.Character.Humanoid
             local hrp = i.Character.HumanoidRootPart
             local head = i.Character.Head
