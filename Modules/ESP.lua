@@ -111,7 +111,7 @@ esp.NewPlayer = function(v)
 end
 
 for _,v in ipairs(plrs:GetPlayers()) do
-    if true then
+    if v ~= plr then
         esp.NewPlayer(v)
     end
 end
