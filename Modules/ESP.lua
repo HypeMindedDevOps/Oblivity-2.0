@@ -73,7 +73,7 @@ end
 
 esp.WallCheck = function(v)
     local ray = Ray.new(camera.CFrame.p, (v.Position - camera.CFrame.p).Unit * 300)
-    local part, position = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, {plr.Character, v.Parent, camera}, false, true)
+    local part, position = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, {plr.Character, camera}, false, true)
     if part then
         local hum = part.Parent:FindFirstChildOfClass("Humanoid")
         if not hum then
