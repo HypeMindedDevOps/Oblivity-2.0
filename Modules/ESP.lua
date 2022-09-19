@@ -279,6 +279,7 @@ local mainLoop = rs.RenderStepped:Connect(function()
                 v.healthText.Visible = false
                 v.distance.Visible = false
                 v.viewAngle.Visible = false
+                v.cham.Enabled = false
             end
         else
             v.name.Visible = false
@@ -289,6 +290,7 @@ local mainLoop = rs.RenderStepped:Connect(function()
             v.healthText.Visible = false
             v.distance.Visible = false
             v.viewAngle.Visible = false
+            v.cham.Enabled = false
         end
     end
 end)
