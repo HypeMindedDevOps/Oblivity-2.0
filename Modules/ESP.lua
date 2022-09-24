@@ -1,11 +1,3 @@
---[[
-
-    Outdated Poorly Coded ESP Library (Universal)
-
-    Made by demo#0293
-
---]]
-
 --[Main Variables]
 
 local plrs = game["Players"]
@@ -52,8 +44,8 @@ local esp = {
         outline_transparency = 0,
         autocolor = false,
         settings_autocolor = {
-            visible = Color3fromRGB(0, 255, 0),
-            invisible = Color3fromRGB(255, 0, 0),
+            visibleColor = Color3fromRGB(0, 255, 0),
+            invisibleColor = Color3fromRGB(255, 0, 0),
         }
     }
 }
@@ -287,6 +279,7 @@ local mainLoop = rs.RenderStepped:Connect(function()
                 v.healthText.Visible = false
                 v.distance.Visible = false
                 v.viewAngle.Visible = false
+                v.cham.Enabled = false
             end
         else
             v.name.Visible = false
