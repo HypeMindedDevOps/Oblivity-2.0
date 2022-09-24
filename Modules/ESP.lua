@@ -148,8 +148,8 @@ local mainLoop = rs.RenderStepped:Connect(function()
                 v.cham.Adornee = i.Character
                 v.cham.Enabled = esp.settings_chams.enabled
                 v.cham.OutlineTransparency = esp.settings_chams.outline and esp.settings_chams.outline_transparency or 1
-                v.cham.OutlineColor = esp.settings_chams.autocolor and esp.settings_chams.autocolor_outline and esp.WallCheck(i.Character.Head) and esp.settings_chams.settings_autocolor.visible or esp.settings_chams.autocolor and esp.settings_chams.autocolor_outline and not esp.WallCheck(i.Character.Head) and esp.settings_chams.settings_autocolor.invisible or esp.settings_chams.outline_color
-                v.cham.FillColor = esp.settings_chams.autocolor and esp.WallCheck(i.Character.Head) and esp.settings_chams.settings_autocolor.visible or esp.settings_chams.autocolor and not esp.WallCheck(i.Character.Head) and esp.settings_chams.settings_autocolor.invisible or esp.settings_chams.fill_color
+                v.cham.OutlineColor = esp.settings_chams.autocolor and esp.settings_chams.autocolor_outline and esp.WallCheck(i.Character.Head) and esp.settings_chams.visible_Color or esp.settings_chams.autocolor and esp.settings_chams.autocolor_outline and not esp.WallCheck(i.Character.Head) and esp.settings_chams.invisible_Color or esp.settings_chams.outline_color
+                v.cham.FillColor = esp.settings_chams.autocolor and esp.WallCheck(i.Character.Head) and esp.settings_chams.visible_Color or esp.settings_chams.autocolor and not esp.WallCheck(i.Character.Head) and esp.settings_chams.invisible_Color or esp.settings_chams.fill_color
                 v.cham.FillTransparency = esp.settings_chams.fill_transparency
 
                 if esp.settings_chams.teamcheck then
