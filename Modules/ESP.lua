@@ -43,10 +43,8 @@ local esp = {
         fill_transparency = 0.3,
         outline_transparency = 0,
         autocolor = false,
-        settings_autocolor = {
-            visibleColor = Color3fromRGB(0, 255, 0),
-            invisibleColor = Color3fromRGB(255, 0, 0),
-        }
+        visible_Color = Color3fromRGB(0, 255, 0),
+        invisible_Color = Color3fromRGB(255, 0, 0),
     }
 }
 
