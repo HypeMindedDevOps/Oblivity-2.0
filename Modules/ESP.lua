@@ -129,7 +129,8 @@ plrs.ChildRemoved:Connect(function(v)
     esp.players[v] = nil
 end)
 
-esp.Update = function()
+local ESP_Loop
+ESP_Loop = rs.RenderStepped:Connect(function()
     for i,v in pairs(esp.players) do
         if i.Character and i.Character:FindFirstChild("Humanoid") and i.Character:FindFirstChild("HumanoidRootPart") and i.Character:FindFirstChild("Head") and i.Character:FindFirstChild("Humanoid").Health > 0 then
             local hum = i.Character.Humanoid
@@ -290,9 +291,12 @@ esp.Update = function()
             v.cham.Enabled = false
         end
     end
-end
+end)
 
 esp.Unload = function()
+    ESP_Loop:Disconnect()
+    ESP_Loop = nil
+    
     for i,v in pairs(esp.players) do
         for i2, v2 in pairs(v) do
             if v2 == "cham" then
