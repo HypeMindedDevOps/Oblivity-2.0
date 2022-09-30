@@ -133,9 +133,9 @@ end)
 local ESP_Loop
 ESP_Loop = rs.RenderStepped:Connect(function()
     for i,v in pairs(esp.players) do
-        if esp.maxdist ~= 0 and (i.Character.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position).Magnitude > esp.maxdist then return end
-
         if i.Character and i.Character:FindFirstChild("Humanoid") and i.Character:FindFirstChild("HumanoidRootPart") and i.Character:FindFirstChild("Head") and i.Character:FindFirstChild("Humanoid").Health > 0  then
+            if esp.maxdist ~= 0 and (i.Character.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position).Magnitude > esp.maxdist then return end
+
             local hum = i.Character.Humanoid
             local hrp = i.Character.HumanoidRootPart
             local head = i.Character.Head
