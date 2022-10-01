@@ -134,7 +134,7 @@ local ESP_Loop
 ESP_Loop = rs.RenderStepped:Connect(function()
     for i,v in pairs(esp.players) do
         if i.Character and i.Character:FindFirstChild("Humanoid") and i.Character:FindFirstChild("HumanoidRootPart") and i.Character:FindFirstChild("Head") and i.Character:FindFirstChild("Humanoid").Health > 0  then
-            if (esp.maxdist ~= 0 and (i.Character.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position).Magnitude < esp.maxdist) then
+            if (esp.maxdist ~= 0 and (i.Character.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position).Magnitude > esp.maxdist) then
                 v.name.Visible = false
                 v.boxOutline.Visible = false
                 v.box.Visible = false
