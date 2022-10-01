@@ -133,19 +133,7 @@ end)
 local ESP_Loop
 ESP_Loop = rs.RenderStepped:Connect(function()
     for i,v in pairs(esp.players) do
-        if i.Character and i.Character:FindFirstChild("Humanoid") and i.Character:FindFirstChild("HumanoidRootPart") and i.Character:FindFirstChild("Head") and i.Character:FindFirstChild("Humanoid").Health > 0  then
-            if (esp.maxdist ~= 0 and (i.Character.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position).Magnitude > esp.maxdist) then
-                v.name.Visible = false
-                v.boxOutline.Visible = false
-                v.box.Visible = false
-                v.healthBarOutline.Visible = false
-                v.healthBar.Visible = false
-                v.healthText.Visible = false
-                v.distance.Visible = false
-                v.viewAngle.Visible = false
-                v.cham.Enabled = false
-            end
-
+        if i.Character and plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") and i.Character:FindFirstChild("Humanoid") and i.Character:FindFirstChild("HumanoidRootPart") and i.Character:FindFirstChild("Head") and i.Character:FindFirstChild("Humanoid").Health > 0 and (esp.maxdist == 0 or (i.Character.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position).Magnitude < esp.maxdist) then
             local hum = i.Character.Humanoid
             local hrp = i.Character.HumanoidRootPart
             local head = i.Character.Head
@@ -195,7 +183,7 @@ ESP_Loop = rs.RenderStepped:Connect(function()
                     v.name.Visible = false
                 end
 
-                if esp.settings.distance.enabled and plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
+                if esp.settings.distance.enabled then
                     v.distance.Position = Vector2new(BoxSize.X / 2 + BoxPos.X, BottomOffset)
                     v.distance.Outline = esp.settings.distance.outline
                     v.distance.Text = "[" .. mathfloor((hrp.Position - plr.Character.HumanoidRootPart.Position).Magnitude) .. "m]"
