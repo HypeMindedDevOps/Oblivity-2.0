@@ -1,4 +1,4 @@
-if not syn then return game:GetService("Players").LocalPlayer:Kick("Oblivity - Synapse ONLY, Please use Synapse X in order to use Oblivity.") end
+if not syn then return print("sup nigger") end
 
 function SendNotification(title, text)
     game:GetService("StarterGui"):SetCore("SendNotification", {
