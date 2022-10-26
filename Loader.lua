@@ -26,7 +26,8 @@ end
 
 
 local supported_games = {
-    [7353845952] = "ProjectDelta.lua"
+    [7353845952] = "ProjectDelta.lua",
+    [7336302630] = "ProjectDelta.lua"
 }
 
 local game_supported = supported_games[game.PlaceId]
