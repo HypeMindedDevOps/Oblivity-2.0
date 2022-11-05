@@ -254,7 +254,7 @@ ESP_Loop = rs.RenderStepped:Connect(function()
 
                 if esp.settings.weapon.enabled then
                     v.weapon.Visible = true
-                    v.weapon.Position = Vector2new(BoxSize.X + BoxPos.X + 20, BoxPos.Y - 3)
+                    v.weapon.Position = Vector2new(BoxSize.X + BoxPos.X + v.weapon.TextBounds.X / 2 + 3, BoxPos.Y - 3)
                     v.weapon.Outline = esp.settings.name.outline
                     v.weapon.Color = esp.settings.name.color
 
