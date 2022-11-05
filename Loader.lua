@@ -47,5 +47,5 @@ end)
 
 if not s and e then
     setclipboard(tostring(e))
-    return game:GetService("Players").LocalPlayer:Kic("Oblivity - Loader Error Occured, Copied Error to Clipboard, Please DM this to Demo.")
+    return game:GetService("Players").LocalPlayer:Kick("Oblivity - Loader Error Occured, Copied Error to Clipboard, Please DM this to Demo.")
 end
