@@ -22,18 +22,19 @@ local mathceil = math.ceil
 local esp = {
     players = {},
     objects = {},
-    enabled = false,
+    enabled = true,
     teamcheck = false,
     fontsize = 13,
     font = 2,
     maxdist = 0,
     settings = {
-        name = {enabled = false, outline = false, displaynames = false, color = Color3fromRGB(255, 255, 255)},
-        box = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
-        healthbar = {enabled = false, size = 3, outline = false},
-        healthtext = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
-        distance = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
-        viewangle = {enabled = false, color = Color3fromRGB(255, 255, 255)},
+        name = {enabled = true, outline = true, displaynames = true, color = Color3fromRGB(255, 255, 255)},
+        box = {enabled = true, outline = true, color = Color3fromRGB(255, 255, 255)},
+        healthbar = {enabled = true, size = 3, outline = true},
+        healthtext = {enabled = true, outline = true, color = Color3fromRGB(255, 255, 255)},
+        distance = {enabled = true, outline = true, color = Color3fromRGB(255, 255, 255)},
+        viewangle = {enabled = true, color = Color3fromRGB(255, 255, 255)},
+        weapon = {enabled = true, outline = true, color = Color3fromRGB(255, 255, 255)}
     },
     settings_chams = {
         enabled = false,
@@ -41,7 +42,7 @@ local esp = {
         outline = false,
         fill_color = Color3fromRGB(255, 255, 255),
         outline_color = Color3fromRGB(0, 0, 0), 
-        fill_transparency = 0.3,
+        fill_transparency = 0,
         outline_transparency = 0,
         autocolor = false,
         visible_Color = Color3fromRGB(0, 255, 0),
@@ -65,7 +66,6 @@ esp.NewCham = function(properties)
     for i,v in next, properties or {} do
         newCham[i] = v
     end
-    print("new")
 
     return newCham
 end
@@ -105,6 +105,7 @@ esp.NewPlayer = function(v)
         healthText = esp.NewDrawing("Text", {Color = Color3fromRGB(255, 255, 255), Outline = true, Center = true, Size = 13, Font = 2}),
         distance = esp.NewDrawing("Text", {Color = Color3fromRGB(255, 255, 255), Outline = true, Center = true, Size = 13, Font = 2}),
         viewAngle = esp.NewDrawing("Line", {Color = Color3fromRGB(255, 255, 255), Thickness = 1}),
+        weapon = esp.NewDrawing("Text", {Color = Color3fromRGB(255, 255, 255), Outline = true, Center = true, Size = 13, Font = 2}),
         cham = esp.NewCham({FillColor = esp.settings_chams.fill_color, OutlineColor = esp.settings_chams.outline_color, FillTransparency = esp.settings_chams.fill_transparency, OutlineTransparency = esp.settings_chams.outline_transparency})
     }
 end
@@ -119,7 +120,7 @@ plrs.ChildAdded:Connect(function(v)
     esp.NewPlayer(v)
 end)
 
-plrs.ChildRemoved:Connect(function(v)
+plrs.PlayerRemoving:Connect(function(v)
     for i2,v2 in pairs(esp.players[v]) do
         pcall(function()
             v2:Remove()
@@ -251,6 +252,20 @@ ESP_Loop = rs.RenderStepped:Connect(function()
                     v.viewAngle.Visible = false
                 end
 
+                if esp.settings.weapon.enabled then
+                    v.weapon.Visible = true
+                    v.weapon.Position = Vector2new(BoxSize.X + BoxPos.X + 20, BoxPos.Y - 3)
+                    v.weapon.Outline = esp.settings.name.outline
+                    v.weapon.Color = esp.settings.name.color
+
+                    v.weapon.Font = esp.font
+                    v.weapon.Size = esp.fontsize
+
+                    v.weapon.Text = (i.Character:FindFirstChildOfClass("Tool") and tostring(i.Character:FindFirstChildOfClass("Tool"))) or "Hands"
+                else
+                    v.weapon.Visible = false
+                end
+
                 if esp.teamcheck then
                     if esp.TeamCheck(i) then
                         v.name.Visible = esp.settings.name.enabled
@@ -259,6 +274,7 @@ ESP_Loop = rs.RenderStepped:Connect(function()
                         v.healthText.Visible = esp.settings.healthtext.enabled
                         v.distance.Visible = esp.settings.distance.enabled
                         v.viewAngle.Visible = esp.settings.viewangle.enabled
+                        v.weapon.Visible = esp.settings.weapon.enabled
                     else
                         v.name.Visible = false
                         v.boxOutline.Visible = false
@@ -268,6 +284,7 @@ ESP_Loop = rs.RenderStepped:Connect(function()
                         v.healthText.Visible = false
                         v.distance.Visible = false
                         v.viewAngle.Visible = false
+                        v.weapon.Visible = false
                     end
                 end
             else
@@ -279,6 +296,7 @@ ESP_Loop = rs.RenderStepped:Connect(function()
                 v.healthText.Visible = false
                 v.distance.Visible = false
                 v.viewAngle.Visible = false
+                v.weapon.Visible = false
             end
         else
             v.name.Visible = false
@@ -290,6 +308,7 @@ ESP_Loop = rs.RenderStepped:Connect(function()
             v.distance.Visible = false
             v.viewAngle.Visible = false
             v.cham.Enabled = false
+            v.weapon.Visible = false
         end
     end
 end)
