@@ -30,10 +30,10 @@ local esp = {
     settings = {
         name = {enabled = false, outline = false, displaynames = false, color = Color3fromRGB(255, 255, 255)},
         box = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
-        healthbar = {enabled = false, size = 3, outline = false},
+        healthbar = {enabled = false, size = 3, outline = true},
         healthtext = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
         distance = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)},
-        viewangle = {enabled = false, color = Color3fromRGB(255, 255, 255)},
+        viewangle = {enabled = false, size = 10, color = Color3fromRGB(255, 255, 255)},
         weapon = {enabled = false, outline = false, color = Color3fromRGB(255, 255, 255)}
     },
     settings_chams = {
@@ -245,7 +245,7 @@ ESP_Loop = rs.RenderStepped:Connect(function()
 
                 if esp.settings.viewangle.enabled and head and head.CFrame then
                     v.viewAngle.From = Vector2new(camera:worldToViewportPoint(head.CFrame.p).X, camera:worldToViewportPoint(head.CFrame.p).Y)
-                    v.viewAngle.To = Vector2new(camera:worldToViewportPoint((head.CFrame + (head.CFrame.lookVector * 10)).p).X, camera:worldToViewportPoint((head.CFrame + (head.CFrame.lookVector * 10)).p).Y)
+                    v.viewAngle.To = Vector2new(camera:worldToViewportPoint((head.CFrame + (head.CFrame.lookVector * esp.settings.viewangle.size)).p).X, camera:worldToViewportPoint((head.CFrame + (head.CFrame.lookVector * esp.settings.viewangle.size)).p).Y)
                     v.viewAngle.Color = esp.settings.viewangle.color
                     v.viewAngle.Visible = true
                 else
