@@ -1,4 +1,4 @@
-if not syn then return print("sup nigger") end
+if not syn then return print("sup hommie") end
 
 function SendNotification(title, text)
     game:GetService("StarterGui"):SetCore("SendNotification", {
